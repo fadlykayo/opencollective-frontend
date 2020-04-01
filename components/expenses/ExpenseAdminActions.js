@@ -39,7 +39,7 @@ const ButtonWithLabel = styled(StyledRoundButton).attrs({ size: 40, m: 2 })`
  * Admin buttons for the expense, displayed in a React fragment to let parent
  * in control of the layout.
  */
-const ExpenseAdminActions = ({ expense, collective, permissions, onError, onEdit, isDisabled }) => {
+const ExpenseAdminActions = ({ expense, collective, permissions, onError, isDisabled }) => {
   const { isCopied, copy } = useClipboard();
   return (
     <React.Fragment>
@@ -65,14 +65,6 @@ const ExpenseAdminActions = ({ expense, collective, permissions, onError, onEdit
           )}
         </ButtonLabel>
       </ButtonWithLabel>
-      {permissions?.canEdit && (
-        <ButtonWithLabel onClick={onEdit} disabled={isDisabled}>
-          <PencilAlt size={16} />
-          <ButtonLabel>
-            <FormattedMessage id="Expense.edit" defaultMessage="Edit expense" />
-          </ButtonLabel>
-        </ButtonWithLabel>
-      )}
       {permissions?.canDelete && (
         <ButtonWithLabel buttonStyle="danger" disabled={isDisabled}>
           <IconTrash size={18} />
@@ -96,8 +88,6 @@ ExpenseAdminActions.propTypes = {
     canDelete: PropTypes.bool,
     canSeeInvoiceInfo: PropTypes.bool,
   }),
-  /** Callback when edit button is clicked */
-  onEdit: PropTypes.func,
   /** Called with an error if anything wrong happens */
   onError: PropTypes.func,
 };
