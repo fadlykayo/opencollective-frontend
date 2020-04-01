@@ -136,7 +136,6 @@ class OnboardingContentBox extends React.Component {
                 menuPortalTarget={document.body}
                 creatable
                 collective={null}
-                preload={true}
                 types={['USER']}
                 onChange={option => {
                   // only assign admins if they are not in the list already
